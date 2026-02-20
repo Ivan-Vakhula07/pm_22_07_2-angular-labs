@@ -1,0 +1,80 @@
+<section class="h-100 p-4 left text-white rounded-start">
+  <div class="addres mb-4">
+    <h3 class="left_title text-uppercase fs-5 border-bottom pb-2">Адреса</h3>
+    <p class="addres__description small">SS Sterrt City/Zip Code - 456</p>
+  </div>
+
+  <div class="photo mb-4 text-center">
+    <img class="photo_image img-fluid rounded-circle border border-5"
+         src="img/labwork07.jpg" alt="Профіль">
+  </div>
+
+  <div class="contact mb-4">
+    <h3 class="left_title text-uppercase fs-5 border-bottom pb-2">Контакти</h3>
+    <ul class="list-group list-group-flush contact_list">
+      <li class="list-group-item bg-transparent text-white border-secondary px-0 py-1">
+        <p class="fw-bold mb-0 small">Телефон</p>
+        <a class="text-info small text-decoration-none" href="tel:+000123456789">+000 123 456 789</a>
+      </li>
+      <li class="list-group-item bg-transparent text-white border-secondary px-0 py-1">
+        <p class="fw-bold mb-0 small">Email</p>
+        <a class="text-info small text-decoration-none" href="mailto:urname@gmail.com">urname@gmail.com</a>
+      </li>
+      <li class="list-group-item bg-transparent text-white border-secondary px-0 py-1">
+        <p class="fw-bold mb-0 small">Вебсайт</p>
+        <a class="text-info small text-decoration-none" href="#">urwebsitename.com</a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="reference mb-4">
+    <h3 class="left_title text-uppercase fs-5 border-bottom pb-2">Рекомендації</h3>
+    <div class="card p-3 rounded-3 shadow-sm bg-secondary bg-opacity-25 border-0">
+      <p class="fw-bold mb-1 small text-white">Sara Taylore</p>
+      <p class="reference-job m-0">Директор | Company Name</p>
+      <a class="text-info small text-decoration-none d-block mt-1" href="tel:+123456789">T: +1 234 56789</a>
+    </div>
+  </div>
+
+  <div class="languages mb-4">
+    <h3 class="left_title text-uppercase fs-5 border-bottom pb-2">Мови</h3>
+    @for (lang of languages(); track lang.name) {
+    <div class="language_item mb-2">
+      <p class="mb-1 small">{{ lang.name }}</p>
+      <div class="progress" style="height: 5px; background: rgba(255,255,255,0.1)">
+        <div class="progress-bar bg-info" [style.width]="lang.level"></div>
+      </div>
+    </div>
+    }
+  </div>
+
+  <div class="hobbies">
+    <h3 class="left_title text-uppercase fs-5 border-bottom pb-2">Хобі</h3>
+    <div class="row g-2 text-center small">
+      <div class="col-6 mb-2">
+        <div class="rounded-circle d-inline-block mb-1 overflow-hidden" style="width: 50px; height: 50px; border: 2px solid var(--secondary);">
+          <img src="img/travel.jpg" alt="Подорожі" class="w-100 h-100 object-fit-cover">
+        </div>
+        <p class="m-0 text-white">Подорожі</p>
+      </div>
+      <div class="col-6 mb-2">
+        <div class="rounded-circle d-inline-block mb-1 overflow-hidden" style="width: 50px; height: 50px; border: 2px solid var(--secondary);">
+          <img src="img/music.jpg" alt="Музика" class="w-100 h-100 object-fit-cover">
+        </div>
+        <p class="m-0 text-white">Музика</p>
+      </div>
+      <div class="col-6 mb-2">
+        <div class="rounded-circle d-inline-block mb-1 overflow-hidden" style="width: 50px; height: 50px; border: 2px solid var(--secondary);">
+          <img src="img/writing.jpg" alt="Письмо" class="w-100 h-100 object-fit-cover">
+        </div>
+        <p class="m-0 text-white">Письмо</p>
+      </div>
+      <div class="col-6 mb-2">
+        <div class="rounded-circle d-inline-block mb-1 overflow-hidden" style="width: 50px; height: 50px; border: 2px solid var(--secondary);">
+          <img src="img/chess.jpg" alt="Шахи" class="w-100 h-100 object-fit-cover">
+        </div>
+        <p class="m-0 text-white">Шахи</p>
+      </div>
+    </div>
+  </div>
+</section>

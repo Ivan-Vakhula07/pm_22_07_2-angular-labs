@@ -1,0 +1,22 @@
+/* Контейнер, що об'єднує ліво і право */
+.content-wrapper {
+    display: flex;
+    flex-wrap: wrap; /* Для адаптивності на мобільних */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    border-radius: 15px;
+    overflow: hidden; /* Щоб закруглені кути працювали */
+    background: white;
+}
+
+/* Гарантуємо, що ліва колонка завжди на всю висоту */
+app-left {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Додаємо невеликий відступ зверху для всього резюме */
+:host {
+    display: block;
+    padding: 40px 0;
+    background-color: #f0f2f5; /* Світло-сірий фон навколо резюме */
+}

@@ -1,1 +1,173 @@
-/* You can add global styles to this file, and also import other style files */
+/* Твої кольори */
+:root {
+  --primary: #2b7a78;
+  --secondary: #3aafa9;
+  --dark: #17252a;
+  --light: #def2f1;
+  --accent-red: #ff4d4d; /* Яскравий червоний для акцентів */
+}
+
+/* Каркас резюме */
+.content {
+  display: flex;
+  min-height: 85vh;
+  background-color: white;
+  overflow: hidden;
+}
+
+/* ЛІВА ПАНЕЛЬ */
+app-left {
+  background-color: var(--dark) !important;
+  display: block;
+  height: 100%;
+  color: white;
+}
+
+.left_title {
+  color: var(--secondary);
+  text-transform: uppercase;
+  border-bottom: 2px solid var(--secondary);
+  padding-bottom: 8px;
+  margin-bottom: 20px;
+}
+
+/* ФОТО */
+.photo_image {
+  border: 5px solid var(--light);
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+}
+
+/* --- КОНТАКТИ ТА РЕКОМЕНДАЦІЇ --- */
+
+.reference-job {
+  color: var(--accent-red) !important;
+  font-weight: 600;
+  font-size: 1rem !important;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.25rem;
+}
+
+.reference .card {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  border: none;
+}
+
+.contact_list a {
+  color: var(--secondary) !important;
+  transition: 0.3s;
+  font-size: 1.05rem !important;
+}
+
+/* --- ПРАВА ПАНЕЛЬ --- */
+
+.header_title {
+  color: var(--primary);
+  font-weight: 800;
+}
+
+/* Текст "Про мене" на 3 повних рядки */
+.aboutme_text {
+  font-size: 1.15rem !important;
+  line-height: 1.65;
+  color: #333 !important;
+  text-align: justify;
+  width: 100%;
+  margin-top: 10px;
+}
+
+/* КАРТКИ З ТОВСТИМ КОЛЬОРОВИМ КОНТУРОМ (5px) */
+.education_full_card {
+  border: 5px solid #0d6efd !important; /* Товстий синій колір */
+  border-radius: 12px;
+  background: white;
+  transition: 0.3s ease;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.experience_full_card {
+  border: 5px solid #198754 !important; /* Товстий зелений колір */
+  border-radius: 12px;
+  background: white;
+  transition: 0.3s ease;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.education_full_card:hover, .experience_full_card:hover {
+  box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+  transform: translateY(-3px);
+}
+
+/* --- ЕКСПЕРТИЗА (КРУЖЕЧКИ) --- */
+.circular-progress {
+  --p: 0;
+  width: 105px;
+  height: 105px;
+  border-radius: 50%;
+  background: conic-gradient(#f75c03 var(--p), #e0e0e0 0);
+  display: grid;
+  place-items: center;
+  margin: 0 auto;
+  position: relative;
+}
+
+.circular-progress::before {
+  content: "";
+  position: absolute;
+  width: 88px;
+  height: 88px;
+  background: white;
+  border-radius: 50%;
+}
+
+.circular-progress .text-content {
+  position: relative;
+  font-size: 0.9rem !important;
+  font-weight: bold;
+  color: var(--dark);
+  z-index: 1;
+  text-align: center;
+  line-height: 1.1;
+}
+
+/* --- ХОБІ --- */
+.hobbies .rounded-circle {
+  border: 2px solid var(--secondary) !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+/* --- ВЕЛИКІ ШРИФТИ --- */
+
+p, .text-muted {
+  font-size: 1.05rem !important;
+  line-height: 1.6;
+}
+
+.contact_list p.fw-bold {
+  font-size: 1.15rem !important;
+}
+
+.card-body h5 {
+  font-size: 1.35rem !important;
+  font-weight: 700;
+  color: #222;
+}
+
+.language_item p, .hobbies p {
+  font-size: 1.05rem !important;
+  font-weight: 600;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.mb-5 {
+  margin-bottom: 3.5rem !important;
+}

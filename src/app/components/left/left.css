@@ -1,0 +1,23 @@
+:host {
+    display: block;
+    background-color: var(--dark-color);
+    color: white;
+    min-height: 100%;
+    padding: 30px;
+}
+
+.left_title {
+    color: var(--secondary-color);
+    border-bottom: 2px solid var(--secondary-color);
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.photo_image {
+    border: 5px solid var(--light-color);
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+.language_item .progress-bar { background-color: var(--secondary-color); }

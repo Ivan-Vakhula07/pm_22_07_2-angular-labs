@@ -1,0 +1,83 @@
+<section class="p-4 right bg-white h-100">
+  <div class="header mb-4 border-bottom pb-3">
+    <h1 class="header_title display-3 fw-bolder">ІВАН ВАХУЛА</h1>
+    <p class="lead text-uppercase text-secondary" style="letter-spacing: 2px;">UI/UX Designer</p>
+  </div>
+
+  <div class="aboutme mb-5">
+    <div class="d-flex justify-content-between align-items-center cursor-pointer border-bottom mb-3 pb-2" (click)="toggleAbout()">
+      <h3 class="text-uppercase fs-4 m-0 fw-bold border-bottom border-primary border-3 pb-1">Про мене</h3>
+      <i class="bi fs-4 text-primary" [class.bi-chevron-up]="isAboutOpen()" [class.bi-chevron-down]="!isAboutOpen()"></i>
+    </div>
+
+    @if (isAboutOpen()) {
+    <div class="row">
+      <div class="col-12">
+        <p class="aboutme_text">
+          Я — креативний UI дизайнер із 5-річним досвідом, що спеціалізується на створенні інтуїтивно зрозумілих і естетично приємних користувацьких інтерфейсів.
+          Пристрасть до мінімалізму та функціональності.
+        </p>
+      </div>
+    </div>
+    }
+  </div>
+
+  <div class="section_container mb-4">
+    <div class="d-flex justify-content-between align-items-center cursor-pointer border-bottom mb-3 pb-2" (click)="toggleEducation()">
+      <h3 class="text-uppercase fs-4 m-0 fw-bold border-bottom border-primary border-3 pb-1">Освіта</h3>
+      <i class="bi fs-4 text-primary" [class.bi-chevron-up]="isEducationOpen()" [class.bi-chevron-down]="!isEducationOpen()"></i>
+    </div>
+    @if (isEducationOpen()) {
+    <div class="card mb-3 education_full_card">
+      <div class="card-body p-3">
+        <h5 class="fw-bold mb-1">Бакалавр прикладна математика</h5>
+        <p class="mb-0 small text-secondary">Національний університет <span class="badge bg-primary">2018 - 2020</span></p>
+      </div>
+    </div>
+    <div class="card mb-3 education_full_card">
+      <div class="card-body p-3">
+        <h5 class="fw-bold mb-1">Бакалавр дизайну</h5>
+        <p class="mb-0 small text-secondary">Національний університет Львівська політехніка <span class="badge bg-primary">2014 - 2018</span></p>
+      </div>
+    </div>
+    }
+  </div>
+
+  <div class="section_container mb-4">
+    <div class="d-flex justify-content-between align-items-center cursor-pointer border-bottom mb-3 pb-2" (click)="toggleExperience()">
+      <h3 class="text-uppercase fs-4 m-0 fw-bold border-bottom border-primary border-3 pb-1">Досвід</h3>
+      <i class="bi fs-4 text-primary" [class.bi-chevron-up]="isExperienceOpen()" [class.bi-chevron-down]="!isExperienceOpen()"></i>
+    </div>
+    @if (isExperienceOpen()) {
+    <div class="card mb-3 experience_full_card">
+      <div class="card-body p-3">
+        <h5 class="fw-bold mb-1">Старший UI/UX Дизайнер</h5>
+        <p class="text-success small fw-bold mb-2">2022 - Present Tech Innovations Inc. / Київ</p>
+        <p class="mb-0 small text-muted">Керування командою з 3 дизайнерів, розробка дизайн-системи та впровадження нових інтерфейсів для B2B платформи.</p>
+      </div>
+    </div>
+    <div class="card mb-3 experience_full_card">
+      <div class="card-body p-3">
+        <h5 class="fw-bold mb-1">Молодший Веб-дизайнер</h5>
+        <p class="text-success small fw-bold mb-2">2019 - 2022 Creative Studio Lviv / Львів</p>
+        <p class="mb-0 small text-muted">Створення макетів вебсайтів та мобільних додатків, тестування користувацького досвіду (UX).</p>
+      </div>
+    </div>
+    }
+  </div>
+
+  <div class="expertise">
+    <h3 class="text-uppercase fs-4 mb-3 border-bottom border-primary border-3 d-inline-block pb-1 fw-bold">Експертиза</h3>
+    <div class="row row-cols-2 row-cols-md-4 g-3 text-center mt-2">
+      @for (skill of skills(); track skill.name) {
+      <div class="col">
+        <div class="circular-progress" [style.--p]="skill.percent + '%'">
+          <div class="text-content">
+            <strong>{{ skill.name.split(' ')[0] }}</strong><br>{{ skill.name.split(' ')[1] || '' }}
+          </div>
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+</section>

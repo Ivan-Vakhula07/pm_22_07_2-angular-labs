@@ -1,0 +1,44 @@
+:host {
+    display: block;
+    padding: 40px;
+}
+
+h3 {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--secondary-color);
+    padding-bottom: 10px;
+}
+
+/* Стилі для карток Освіта та Досвід */
+.education_card, .experience_card {
+    border: 2px solid var(--secondary-color);
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    transition: 0.3s;
+}
+
+.experience_card { border-color: #198754; } /* Зелений для досвіду */
+
+/* Кругові діаграми Експертиза */
+.circular-progress {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: conic-gradient(#f75c03 var(--p), #e0e0e0 0);
+    display: grid;
+    place-items: center;
+    position: relative;
+    margin: 0 auto;
+}
+
+.circular-progress::before {
+    content: "";
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background: white;
+    border-radius: 50%;
+}
+
+.text-content { position: relative; z-index: 1; font-size: 0.8rem; font-weight: bold; }
