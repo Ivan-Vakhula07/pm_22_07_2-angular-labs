@@ -1,12 +1,31 @@
-<div class="aboutme mb-5">
-  <div class="d-flex justify-content-between align-items-center cursor-pointer border-bottom mb-3 pb-2" (click)="toggle()">
-    <h3 class="text-uppercase fs-4 m-0 fw-bold border-bottom border-primary border-3 pb-1">Про мене</h3>
-    <i class="bi fs-4 text-primary" [class.bi-chevron-up]="isOpen()" [class.bi-chevron-down]="!isOpen()"></i>
+<div class="aboutme mb-5 border p-3 rounded shadow-sm">
+  <div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom">
+    <div class="d-flex align-items-center cursor-pointer" (click)="toggle()">
+      <h3 class="text-uppercase fs-4 m-0 fw-bold border-bottom border-primary border-3 pb-1">Про мене</h3>
+      <i class="bi ms-2 fs-4 text-primary" [class.bi-chevron-up]="isOpen()" [class.bi-chevron-down]="!isOpen()"></i>
+    </div>
+    <button class="btn btn-sm" [class.btn-outline-primary]="!isEditMode()" [class.btn-success]="isEditMode()" (click)="toggleEdit()">
+      {{ isEditMode() ? 'Зберегти' : 'Редагувати' }}
+    </button>
   </div>
+
   @if (isOpen()) {
   <div class="row">
     <div class="col-12">
-      <p class="aboutme_text">{{ content() }}</p>
+      @if (!isEditMode()) {
+      <p class="aboutme_text" style="white-space: pre-wrap;">{{ content() }}</p>
+      } @else {
+      <form #aboutForm="ngForm">
+            <textarea name="aboutContent" class="form-control" [(ngModel)]="content" required minlength="10"
+                      #aboutInput="ngModel" [class.is-invalid]="aboutInput.invalid && aboutInput.touched" rows="4"></textarea>
+        @if (aboutInput.invalid && aboutInput.touched) {
+        <div class="invalid-feedback">
+          @if (aboutInput.errors?.['required']) { Поле обов'язкове! }
+          @if (aboutInput.errors?.['minlength']) { Мінімум 10 символів! }
+        </div>
+        }
+      </form>
+      }
     </div>
   </div>
   }

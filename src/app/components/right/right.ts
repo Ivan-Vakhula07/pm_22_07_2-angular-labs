@@ -1,40 +1,48 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ResumeService } from '../../services/resume.service';
-import { AboutComponent } from '../about/about';
-import { EducationComponent } from '../education/education';
-import { ExperienceComponent } from '../experience/experience';
+import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-right',
   standalone: true,
-  imports: [CommonModule, AboutComponent, EducationComponent, ExperienceComponent],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './right.html',
   styleUrl: './right.css'
 })
 export class RightComponent implements OnInit {
   private resumeService = inject(ResumeService);
-  public resumeData = this.resumeService.resumeData;
-  public errorMessage = this.resumeService.errorMessage;
+  private fb = inject(FormBuilder);
+
+  // Спрощуємо валідацію, щоб кнопка точно працювала
+  public contactForm = this.fb.group({
+    userName: ['', Validators.required],
+    userEmail: ['', [Validators.required, Validators.email]],
+    message: ['', Validators.required]
+  });
+
+  // ЦЕ ВИПРАВЛЯЄ ПОМИЛКУ "Property f does not exist"
+  get f() { return this.contactForm.controls; }
 
   ngOnInit() {
     this.resumeService.getResume();
   }
 
-  saveData() {
-    const currentData = this.resumeData() as any;
-    if (currentData) {
-      const updatedData = {
-        ...currentData,
-        personal: {
-          ...currentData.personal,
-          name: currentData.personal.name.includes('(ОНОВЛЕНО)') ? "ІВАН ВАХУЛА" : "ІВАН ВАХУЛА (ОНОВЛЕНО)"
+  onContactSubmit() {
+    console.log('Кнопка натиснута!');
+    if (this.contactForm.valid) {
+      // ПУНКТ 4: РЕАЛЬНА ВІДПРАВКА
+      this.resumeService.sendContactMessage(this.contactForm.value).subscribe({
+        next: (res) => {
+          alert('УРА! Дані відправлено в db.json!');
+          this.contactForm.reset();
+        },
+        error: (err) => {
+          alert('ПОМИЛКА: Кнопка працює, але сервер НЕ ЗАПУЩЕНИЙ у терміналі!');
         }
-      };
-      this.resumeService.updateResume(updatedData).subscribe({
-        next: (res) => res && alert('Дані збережено в db.json!'),
-        error: () => alert('Помилка збереження!')
       });
+    } else {
+      alert('Будь ласка, заповніть усі поля!');
     }
   }
 }

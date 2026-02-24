@@ -1,51 +1,40 @@
 {
-  "personal": {
-    "name": "ІВАН ВАХУЛА",
-    "job": "UI/UX DESIGNER",
-    "about": " Я креативний UI дизайнер із 5-річним досвідом, що спеціалізується на створенні інтуїтивно зрозумілих і естетично приємних користувацьких інтерфейсів. Пристрасть до мінімалізму та функціональності."
+  "resume": {
+    "personal": {
+      "name": "ІВАН ВАХУЛА",
+      "job": "Front-end Developer"
+    }
   },
-  "education": [
+  "messages": [
     {
-      "university": "Національний університет",
-      "degree": "Бакалавр прикладна математика",
-      "years": "2018 - 2020"
+      "id": "bebe",
+      "userName": "ІВАН",
+      "userEmail": "ivan@123",
+      "message": "ЛЬвів Київ"
     },
     {
-      "university": "Національний університет Львівська політехніка",
-      "degree": "Бакалавр дизайну",
-      "years": "2014 - 2018"
-    }
-  ],
-  "experience": [
-    {
-      "company": "Tech Innovations Inc. / Київ",
-      "role": "Старший UI/UX Дизайнер",
-      "years": "2022 - Present",
-      "description": "Керування командою з 3 дизайнерів, розробка дизайн-системи та впровадження нових інтерфейсів для B2B платформи."
+      "id": "888d",
+      "userName": "ІВАН",
+      "userEmail": "ivan@2007",
+      "message": "Національний універститет \"Львівська політехніка\""
     },
     {
-      "company": "Creative Studio Lviv / Львів",
-      "role": "Молодший Веб-дизайнер",
-      "years": "2019 - 2022",
-      "description": "Створення макетів вебсайтів та мобільних додатків, тестування користувацького досвіду (UX)."
-    }
-  ],
-  "skills": [
-    {
-      "name": "Adobe Photoshop",
-      "percent": 85
+      "id": "5ce8",
+      "userName": "Андрій",
+      "userEmail": "andrie@123",
+      "message": "Львів"
     },
     {
-      "name": "Adobe Illustrator",
-      "percent": 75
+      "id": "8bee",
+      "userName": "SD",
+      "userEmail": "LV@23",
+      "message": "Перемога!"
     },
     {
-      "name": "Adobe Indesign",
-      "percent": 60
-    },
-    {
-      "name": "Power Point",
-      "percent": 90
+      "id": "d968",
+      "userName": "Ukraine",
+      "userEmail": "Ukraine@is",
+      "message": "Слава Україні!!!"
     }
   ]
 }

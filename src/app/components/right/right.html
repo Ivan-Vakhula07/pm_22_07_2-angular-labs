@@ -1,38 +1,31 @@
-<section class="p-4 right bg-white h-100">
-  @if (errorMessage()) {
-  <div class="alert alert-danger">{{ errorMessage() }}</div>
-  }
+<div class="mt-5 p-4 border rounded shadow-sm bg-light">
+  <h3 class="text-uppercase fs-4 mb-4 border-bottom border-success border-3 d-inline-block pb-1 fw-bold text-success">
+    Зворотний зв'язок (Реактивна форма)
+  </h3>
 
-  @if (resumeData(); as data) {
-  <div class="header mb-4 border-bottom pb-3">
-    <h1 class="header_title display-3 fw-bolder">{{ data.personal.name }}</h1>
-    <p class="lead text-uppercase text-secondary" style="letter-spacing: 2px;">{{ data.personal.job }}</p>
-  </div>
-
-  <app-about [content]="data.personal.about"></app-about>
-
-  <app-education [list]="data.education"></app-education>
-
-  <app-experience [list]="data.experience"></app-experience>
-
-  <div class="expertise mt-4">
-    <h3 class="text-uppercase fs-4 mb-3 border-bottom border-primary border-3 d-inline-block pb-1 fw-bold">Експертиза</h3>
-    <div class="row row-cols-2 row-cols-md-4 g-3 text-center mt-2">
-      @for (skill of data.skills; track skill.name) {
-      <div class="col">
-        <div class="circular-progress" [style.--p]="skill.percent + '%'">
-          <div class="text-content"><strong>{{ skill.name }}</strong><br>{{ skill.percent }}%</div>
-        </div>
+  <form [formGroup]="contactForm" (ngSubmit)="onContactSubmit()">
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label class="form-label fw-bold">Ваше ім'я</label>
+        <input type="text" formControlName="userName" class="form-control"
+               [class.is-invalid]="f.userName.invalid && f.userName.touched">
       </div>
-      }
+
+      <div class="col-md-6 mb-3">
+        <label class="form-label fw-bold">Електронна пошта</label>
+        <input type="email" formControlName="userEmail" class="form-control"
+               [class.is-invalid]="f.userEmail.invalid && f.userEmail.touched">
+      </div>
+
+      <div class="col-12 mb-3">
+        <label class="form-label fw-bold">Повідомлення</label>
+        <textarea formControlName="message" class="form-control" rows="3"
+                  [class.is-invalid]="f.message.invalid && f.message.touched"></textarea>
+      </div>
     </div>
-  </div>
 
-  <div class="mt-5 text-center">
-    <button class="btn btn-outline-primary" (click)="saveData()">Оновити дані на сервері</button>
-  </div>
-
-  } @else if (!errorMessage()) {
-  <div class="text-center mt-5"><div class="spinner-border text-primary"></div></div>
-  }
-</section>
+    <button type="submit" class="btn btn-success w-100 py-2 fw-bold">
+      ВІДПРАВИТИ НА СЕРВЕР (POST)
+    </button>
+  </form>
+</div>
