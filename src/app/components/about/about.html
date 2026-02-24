@@ -1,0 +1,13 @@
+<div class="aboutme mb-5">
+  <div class="d-flex justify-content-between align-items-center cursor-pointer border-bottom mb-3 pb-2" (click)="toggle()">
+    <h3 class="text-uppercase fs-4 m-0 fw-bold border-bottom border-primary border-3 pb-1">Про мене</h3>
+    <i class="bi fs-4 text-primary" [class.bi-chevron-up]="isOpen()" [class.bi-chevron-down]="!isOpen()"></i>
+  </div>
+  @if (isOpen()) {
+  <div class="row">
+    <div class="col-12">
+      <p class="aboutme_text">{{ content() }}</p>
+    </div>
+  </div>
+  }
+</div>
