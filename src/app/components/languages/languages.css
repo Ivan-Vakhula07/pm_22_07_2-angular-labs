@@ -1,0 +1,15 @@
+/* З left.css */
+.left_title {
+    color: var(--secondary-color);
+    border-bottom: 2px solid var(--secondary-color);
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.language_item .progress {
+    height: 5px;
+    background: rgba(255,255,255,0.1);
+}
+.language_item .progress-bar {
+    background-color: var(--secondary-color);
+}

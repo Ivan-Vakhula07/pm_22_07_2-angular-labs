@@ -1,0 +1,21 @@
+/* З left.css */
+.left_title {
+    color: var(--secondary-color);
+    border-bottom: 2px solid var(--secondary-color);
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.photo_image {
+    border: 5px solid var(--light-color);
+    border-radius: 50%;
+    margin-bottom: 20px;
+    width: 150px; /* Додано для контролю розміру */
+    height: 150px;
+    object-fit: cover;
+}
+.addres__description {
+    color: white;
+    font-size: 0.875rem;
+}

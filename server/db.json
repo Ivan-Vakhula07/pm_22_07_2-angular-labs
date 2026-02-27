@@ -1,40 +1,5 @@
 {
-  "resume": {
-    "personal": {
-      "name": "ІВАН ВАХУЛА",
-      "job": "Front-end Developer"
-    }
-  },
-  "messages": [
-    {
-      "id": "bebe",
-      "userName": "ІВАН",
-      "userEmail": "ivan@123",
-      "message": "ЛЬвів Київ"
-    },
-    {
-      "id": "888d",
-      "userName": "ІВАН",
-      "userEmail": "ivan@2007",
-      "message": "Національний універститет \"Львівська політехніка\""
-    },
-    {
-      "id": "5ce8",
-      "userName": "Андрій",
-      "userEmail": "andrie@123",
-      "message": "Львів"
-    },
-    {
-      "id": "8bee",
-      "userName": "SD",
-      "userEmail": "LV@23",
-      "message": "Перемога!"
-    },
-    {
-      "id": "d968",
-      "userName": "Ukraine",
-      "userEmail": "Ukraine@is",
-      "message": "Слава Україні!!!"
-    }
-  ]
+  "userName": "perpect",
+  "userEmail": "vakhula@ivan07072007.gmail.com",
+  "message": "Я cneltyn"
 }

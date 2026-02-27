@@ -1,0 +1,13 @@
+/* З left.css */
+.left_title {
+    color: var(--secondary-color);
+    border-bottom: 2px solid var(--secondary-color);
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.hobby-image-wrapper {
+    width: 50px;
+    height: 50px;
+    border: 2px solid var(--secondary-color);
+}

@@ -1,0 +1,33 @@
+/* Відступи та фон картки (з left.css) */
+.card {
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.1); /* Напівпрозорий білий */
+    border: none;
+    padding: 15px;
+}
+
+/* Заголовок рекомендації (ім'я) */
+.fw-bold.text-white {
+    font-weight: bold;
+    color: white;
+    margin-bottom: 5px;
+}
+
+/* Посада */
+.reference-job {
+    color: rgba(255, 255, 255, 0.7); /* Трохи прозорий білий */
+    font-size: 0.85rem;
+    margin-bottom: 10px;
+}
+
+/* Посилання (телефон) */
+.text-info {
+    color: #0dcaf0 !important; /* Блакитний колір */
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: color 0.2s;
+}
+
+.text-info:hover {
+    color: #fff !important; /* Білий при наведенні */
+}
