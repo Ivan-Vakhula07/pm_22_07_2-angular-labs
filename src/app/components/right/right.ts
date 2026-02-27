@@ -4,11 +4,14 @@ import { ResumeService } from '../../services/resume.service';
 import { AboutComponent } from '../about/about';
 import { EducationComponent } from '../education/education';
 import { ExperienceComponent } from '../experience/experience';
+// Імпортуємо компонент експертизи
+import { ExpertiseComponent } from '../expertise/expertise';
 
 @Component({
   selector: 'app-right',
   standalone: true,
-  imports: [CommonModule, AboutComponent, EducationComponent, ExperienceComponent],
+  // Додаємо ExpertiseComponent в imports
+  imports: [CommonModule, AboutComponent, EducationComponent, ExperienceComponent, ExpertiseComponent],
   templateUrl: './right.html',
   styleUrl: './right.css'
 })

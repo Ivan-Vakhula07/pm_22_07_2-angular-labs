@@ -15,18 +15,7 @@
 
   <app-experience [list]="data.experience"></app-experience>
 
-  <div class="expertise mt-4">
-    <h3 class="text-uppercase fs-4 mb-3 border-bottom border-primary border-3 d-inline-block pb-1 fw-bold">Експертиза</h3>
-    <div class="row row-cols-2 row-cols-md-4 g-3 text-center mt-2">
-      @for (skill of data.skills; track skill.name) {
-      <div class="col">
-        <div class="circular-progress" [style.--p]="skill.percent + '%'">
-          <div class="text-content"><strong>{{ skill.name }}</strong><br>{{ skill.percent }}%</div>
-        </div>
-      </div>
-      }
-    </div>
-  </div>
+  <app-expertise [skills]="data.skills"></app-expertise>
 
   <div class="mt-5 text-center">
     <button class="btn btn-outline-primary" (click)="saveData()">Оновити дані на сервері</button>
