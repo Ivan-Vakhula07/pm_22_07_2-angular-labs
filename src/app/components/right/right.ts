@@ -14,14 +14,16 @@ export class RightComponent implements OnInit {
   private resumeService = inject(ResumeService);
   private fb = inject(FormBuilder);
 
-  // Спрощуємо валідацію, щоб кнопка точно працювала
+  // ПУНКТ 3: РЕАЛІЗАЦІЯ РЕАКТИВНОЇ ФОРМИ ТА ДОДАТКОВА ЛОГІКА ВАЛІДАЦІЇ
+  // Створюємо групу полів через FormBuilder
   public contactForm = this.fb.group({
-    userName: ['', Validators.required],
-    userEmail: ['', [Validators.required, Validators.email]],
-    message: ['', Validators.required]
+    // ПУНКТ 2: ВАЛІДАЦІЯ ОБОВ'ЯЗКОВИХ ПОЛІВ ТА ФОРМАТУ
+    userName: ['', Validators.required], // Обов'язкове поле
+    userEmail: ['', [Validators.required, Validators.email]], // Обов'язкове + перевірка формату email
+    message: ['', Validators.required] // Обов'язкове поле
   });
 
-  // ЦЕ ВИПРАВЛЯЄ ПОМИЛКУ "Property f does not exist"
+  // Геттер для швидкого доступу до контролів форми у HTML-шаблоні
   get f() { return this.contactForm.controls; }
 
   ngOnInit() {
@@ -30,12 +32,16 @@ export class RightComponent implements OnInit {
 
   onContactSubmit() {
     console.log('Кнопка натиснута!');
+
+    // Перевірка валідності всієї форми перед відправкою
     if (this.contactForm.valid) {
-      // ПУНКТ 4: РЕАЛЬНА ВІДПРАВКА
+
+      // ПУНКТ 4: ВІДПРАВКА ВВЕДЕНИХ ДАНИХ НА СЕРВЕР ЧЕРЕЗ POST-ЗАПИТ
+      // Використовуємо сервіс для передачі об'єкта contactForm.value
       this.resumeService.sendContactMessage(this.contactForm.value).subscribe({
         next: (res) => {
           alert('УРА! Дані відправлено в db.json!');
-          this.contactForm.reset();
+          this.contactForm.reset(); // Очищення форми після успішного запиту
         },
         error: (err) => {
           alert('ПОМИЛКА: Кнопка працює, але сервер НЕ ЗАПУЩЕНИЙ у терміналі!');
