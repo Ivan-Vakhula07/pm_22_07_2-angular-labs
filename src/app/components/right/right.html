@@ -1,31 +1,39 @@
-<div class="mt-5 p-4 border rounded shadow-sm bg-light">
-  <h3 class="text-uppercase fs-4 mb-4 border-bottom border-success border-3 d-inline-block pb-1 fw-bold text-success">
-    Зворотний зв'язок (Реактивна форма)
-  </h3>
+<section class="p-4 right bg-white h-100">
+  @if (errorMessage()) {
+  <div class="alert alert-danger">{{ errorMessage() }}</div>
+  }
+  @if (resumeData(); as data) {
+  }
 
-  <form [formGroup]="contactForm" (ngSubmit)="onContactSubmit()">
-    <div class="row">
-      <div class="col-md-6 mb-3">
-        <label class="form-label fw-bold">Ваше ім'я</label>
-        <input type="text" formControlName="userName" class="form-control"
-               [class.is-invalid]="f.userName.invalid && f.userName.touched">
+  <div class="mt-5 p-4 border rounded shadow-sm bg-light">
+    <h3 class="text-uppercase fs-4 mb-4 border-bottom border-success border-3 d-inline-block pb-1 fw-bold text-success">
+      Зворотний зв'язок (Реактивна форма)
+    </h3>
+
+    <form [formGroup]="contactForm" (ngSubmit)="onContactSubmit()">
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label class="form-label fw-bold">Ваше ім'я</label>
+          <input type="text" formControlName="userName" class="form-control"
+                 [class.is-invalid]="f.userName.invalid && f.userName.touched">
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label class="form-label fw-bold">Електронна пошта</label>
+          <input type="email" formControlName="userEmail" class="form-control"
+                 [class.is-invalid]="f.userEmail.invalid && f.userEmail.touched">
+        </div>
+
+        <div class="col-12 mb-3">
+          <label class="form-label fw-bold">Повідомлення</label>
+          <textarea formControlName="message" class="form-control" rows="3"
+                    [class.is-invalid]="f.message.invalid && f.message.touched"></textarea>
+        </div>
       </div>
 
-      <div class="col-md-6 mb-3">
-        <label class="form-label fw-bold">Електронна пошта</label>
-        <input type="email" formControlName="userEmail" class="form-control"
-               [class.is-invalid]="f.userEmail.invalid && f.userEmail.touched">
-      </div>
-
-      <div class="col-12 mb-3">
-        <label class="form-label fw-bold">Повідомлення</label>
-        <textarea formControlName="message" class="form-control" rows="3"
-                  [class.is-invalid]="f.message.invalid && f.message.touched"></textarea>
-      </div>
-    </div>
-
-    <button type="submit" class="btn btn-success w-100 py-2 fw-bold">
-      ВІДПРАВИТИ НА СЕРВЕР (POST)
-    </button>
-  </form>
-</div>
+      <button type="submit" class="btn btn-success w-100 py-2 fw-bold" [disabled]="contactForm.invalid">
+        ВІДПРАВИТИ НА СЕРВЕР (POST)
+      </button>
+    </form>
+  </div>
+</section>

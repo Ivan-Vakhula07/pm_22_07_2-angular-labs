@@ -3,15 +3,13 @@ import { CanActivateFn, Router } from '@angular/router';
 
 export const authGuard: CanActivateFn = (route, state) => {
   const router = inject(Router);
-
-  // Перевірка статусу входу
   const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
 
   if (isLoggedIn) {
-    return true; // Дозволяємо вхід
+    return true;
   } else {
-    alert('Доступ заборонено! Спочатку увійдіть у систему.');
-    router.navigate(['/login']); // Перенаправляємо на сторінку входу
-    return false; // Блокуємо доступ
+    alert('Доступ заборонено!');
+    router.navigate(['/login']);
+    return false;
   }
 };

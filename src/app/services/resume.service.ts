@@ -1,26 +1,34 @@
-import { Injectable, inject } from '@angular/core';
+import { Injectable, inject, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { catchError, of } from 'rxjs';
+import { catchError, of, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ResumeService {
   private http = inject(HttpClient);
-  // Адреса нашого локального сервера
   private apiUrl = 'http://localhost:3000';
 
-  // Метод для Завдання 4 (POST-запит)
-  sendContactMessage(messageData: any) {
-    return this.http.post<any>(`${this.apiUrl}/messages`, messageData).pipe(
+  // 1. Додайте ці сигнали (вони викликають помилки у right.ts)
+  resumeData = signal<any>(null);
+  errorMessage = signal<string>('');
+
+  // 2. Додайте цей метод (він викликає помилки у about.ts та right.ts)
+  saveResumeData(data: any): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/api/resume`, data).pipe(
       catchError(err => {
-        console.error('Помилка: сервер не відповідає!', err);
+        console.error('Помилка сервера:', err);
+        this.errorMessage.set('Сервер не відповідає');
         return of(null);
       })
     );
   }
 
+  // Метод для отримання даних
   getResume() {
-    return this.http.get<any>(`${this.apiUrl}/resume`);
+    this.http.get<any>(`${this.apiUrl}/api/resume`).subscribe({
+      next: (data) => this.resumeData.set(data),
+      error: (err) => this.errorMessage.set('Не вдалося завантажити дані')
+    });
   }
 }

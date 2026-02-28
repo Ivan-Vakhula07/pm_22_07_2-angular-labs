@@ -4,7 +4,11 @@
       <h3 class="text-uppercase fs-4 m-0 fw-bold border-bottom border-primary border-3 pb-1">Про мене</h3>
       <i class="bi ms-2 fs-4 text-primary" [class.bi-chevron-up]="isOpen()" [class.bi-chevron-down]="!isOpen()"></i>
     </div>
-    <button class="btn btn-sm" [class.btn-outline-primary]="!isEditMode()" [class.btn-success]="isEditMode()" (click)="toggleEdit()">
+    <button class="btn btn-sm"
+            [class.btn-outline-primary]="!isEditMode()"
+            [class.btn-success]="isEditMode()"
+            (click)="toggleEdit()"
+            [disabled]="isEditMode() && aboutForm.invalid">
       {{ isEditMode() ? 'Зберегти' : 'Редагувати' }}
     </button>
   </div>
@@ -14,10 +18,19 @@
     <div class="col-12">
       @if (!isEditMode()) {
       <p class="aboutme_text" style="white-space: pre-wrap;">{{ content() }}</p>
-      } @else {
+      }
+      @else {
       <form #aboutForm="ngForm">
-            <textarea name="aboutContent" class="form-control" [(ngModel)]="content" required minlength="10"
-                      #aboutInput="ngModel" [class.is-invalid]="aboutInput.invalid && aboutInput.touched" rows="4"></textarea>
+          <textarea name="aboutContent"
+                    class="form-control"
+                    [(ngModel)]="content"
+                    required
+                    minlength="10"
+                    #aboutInput="ngModel"
+                    [class.is-invalid]="aboutInput.invalid && aboutInput.touched"
+                    rows="4">
+          </textarea>
+
         @if (aboutInput.invalid && aboutInput.touched) {
         <div class="invalid-feedback">
           @if (aboutInput.errors?.['required']) { Поле обов'язкове! }

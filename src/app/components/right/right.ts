@@ -3,10 +3,19 @@ import { CommonModule } from '@angular/common';
 import { ResumeService } from '../../services/resume.service';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 
+import { HeaderComponent } from '../header/header';
+import { AboutComponent } from '../about/about';
+import { EducationComponent } from '../education/education';
+import { ExperienceComponent } from '../experience/experience';
+import { ExpertiseComponent } from '../expertise/expertise';
+
 @Component({
   selector: 'app-right',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [
+    CommonModule, ReactiveFormsModule,
+    HeaderComponent, AboutComponent, EducationComponent, ExperienceComponent, ExpertiseComponent
+  ],
   templateUrl: './right.html',
   styleUrl: './right.css'
 })
@@ -14,14 +23,16 @@ export class RightComponent implements OnInit {
   private resumeService = inject(ResumeService);
   private fb = inject(FormBuilder);
 
-  // Спрощуємо валідацію, щоб кнопка точно працювала
+  public resumeData = this.resumeService.resumeData;
+  public errorMessage = this.resumeService.errorMessage;
+
   public contactForm = this.fb.group({
     userName: ['', Validators.required],
     userEmail: ['', [Validators.required, Validators.email]],
     message: ['', Validators.required]
   });
 
-  // ЦЕ ВИПРАВЛЯЄ ПОМИЛКУ "Property f does not exist"
+  // ВИПРАВЛЕНО: Додано геттер для доступу до полів форми в HTML
   get f() { return this.contactForm.controls; }
 
   ngOnInit() {
@@ -29,20 +40,14 @@ export class RightComponent implements OnInit {
   }
 
   onContactSubmit() {
-    console.log('Кнопка натиснута!');
     if (this.contactForm.valid) {
-      // ПУНКТ 4: РЕАЛЬНА ВІДПРАВКА
-      this.resumeService.sendContactMessage(this.contactForm.value).subscribe({
-        next: (res) => {
-          alert('УРА! Дані відправлено в db.json!');
+      this.resumeService.saveResumeData(this.contactForm.value).subscribe({
+        next: () => {
+          alert('Дані успішно відправлено!');
           this.contactForm.reset();
         },
-        error: (err) => {
-          alert('ПОМИЛКА: Кнопка працює, але сервер НЕ ЗАПУЩЕНИЙ у терміналі!');
-        }
+        error: () => alert('Помилка сервера!')
       });
-    } else {
-      alert('Будь ласка, заповніть усі поля!');
     }
   }
 }
