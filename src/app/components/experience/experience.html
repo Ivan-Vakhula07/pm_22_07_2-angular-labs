@@ -1,0 +1,17 @@
+<div class="section_container mb-4">
+  <div class="d-flex justify-content-between align-items-center cursor-pointer border-bottom mb-3 pb-2" (click)="toggle()">
+    <h3 class="text-uppercase fs-4 m-0 fw-bold border-bottom border-primary border-3 pb-1">Досвід</h3>
+    <i class="bi fs-4 text-primary" [class.bi-chevron-up]="isOpen()" [class.bi-chevron-down]="!isOpen()"></i>
+  </div>
+  @if (isOpen()) {
+  @for (exp of list(); track exp.company) {
+  <div class="card mb-3 border-success border-start border-4 shadow-sm">
+    <div class="card-body p-3">
+      <h5 class="fw-bold mb-1">{{ exp.role }}</h5>
+      <p class="text-success small fw-bold mb-2">{{ exp.years }} {{ exp.company }}</p>
+      <p class="mb-0 small text-muted">{{ exp.description }}</p>
+    </div>
+  </div>
+  }
+  }
+</div>

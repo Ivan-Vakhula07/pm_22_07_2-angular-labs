@@ -1,0 +1,15 @@
+.experience_full_card {
+  border: 1px solid #198754; /* Зелений контур для досвіду */
+  border-radius: 8px;
+  background-color: #fff;
+}
+
+.text-success {
+  color: #198754 !important;
+  font-weight: 600;
+}
+
+.description {
+  font-size: 0.9rem;
+  color: #6c757d;
+}

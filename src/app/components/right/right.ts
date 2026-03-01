@@ -1,26 +1,43 @@
-import { Component, signal } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ResumeService } from '../../services/resume.service';
+import { AboutComponent } from '../about/about';
+import { EducationComponent } from '../education/education';
+import { ExperienceComponent } from '../experience/experience';
+// Імпортуємо компонент експертизи
+import { ExpertiseComponent } from '../expertise/expertise';
 
 @Component({
   selector: 'app-right',
   standalone: true,
+  // Додаємо ExpertiseComponent в imports
+  imports: [CommonModule, AboutComponent, EducationComponent, ExperienceComponent, ExpertiseComponent],
   templateUrl: './right.html',
   styleUrl: './right.css'
 })
-export class RightComponent {
-  // Керування згортанням
-  isAboutOpen = signal(true);
-  isEducationOpen = signal(true);
-  isExperienceOpen = signal(true);
+export class RightComponent implements OnInit {
+  private resumeService = inject(ResumeService);
+  public resumeData = this.resumeService.resumeData;
+  public errorMessage = this.resumeService.errorMessage;
 
-  // Дані для кружечків експертизи
-  skills = signal([
-    { name: 'Adobe Photoshop', percent: 85 },
-    { name: 'Adobe Illustrator', percent: 75 },
-    { name: 'Adobe Indesign', percent: 60 },
-    { name: 'Power Point', percent: 90 }
-  ]);
+  ngOnInit() {
+    this.resumeService.getResume();
+  }
 
-  toggleAbout() { this.isAboutOpen.set(!this.isAboutOpen()); }
-  toggleEducation() { this.isEducationOpen.set(!this.isEducationOpen()); }
-  toggleExperience() { this.isExperienceOpen.set(!this.isExperienceOpen()); }
+  saveData() {
+    const currentData = this.resumeData() as any;
+    if (currentData) {
+      const updatedData = {
+        ...currentData,
+        personal: {
+          ...currentData.personal,
+          name: currentData.personal.name.includes('(ОНОВЛЕНО)') ? "ІВАН ВАХУЛА" : "ІВАН ВАХУЛА (ОНОВЛЕНО)"
+        }
+      };
+      this.resumeService.updateResume(updatedData).subscribe({
+        next: (res) => res && alert('Дані збережено в db.json!'),
+        error: () => alert('Помилка збереження!')
+      });
+    }
+  }
 }
