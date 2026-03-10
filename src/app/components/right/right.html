@@ -1,7 +1,14 @@
 <section class="p-4 right bg-white h-100">
+  <div class="d-flex justify-content-end mb-3">
+    <button routerLink="/login" class="btn btn-outline-dark btn-sm fw-bold shadow-sm">
+      <i class="bi bi-person-lock"></i> ПАНЕЛЬ АДМІНІСТРАТОРА
+    </button>
+  </div>
+
   @if (errorMessage()) {
   <div class="alert alert-danger">{{ errorMessage() }}</div>
   }
+
   @if (resumeData(); as data) {
   }
 
