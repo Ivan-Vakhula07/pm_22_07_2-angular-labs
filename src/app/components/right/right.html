@@ -1,4 +1,4 @@
-<section class="p-4 right bg-white h-100">
+<section class="p-4 right bg-white h-100 shadow-sm">
   <div class="d-flex justify-content-end mb-3">
     <button routerLink="/login" class="btn btn-outline-dark btn-sm fw-bold shadow-sm">
       <i class="bi bi-person-lock"></i> ПАНЕЛЬ АДМІНІСТРАТОРА
@@ -9,11 +9,33 @@
   <div class="alert alert-danger">{{ errorMessage() }}</div>
   }
 
-  @if (resumeData(); as data) {
-  }
+  <app-header [name]="'ІВАН ВАХУЛА'"></app-header>
 
-  <div class="mt-5 p-4 border rounded shadow-sm bg-light">
-    <h3 class="text-uppercase fs-4 mb-4 border-bottom border-success border-3 d-inline-block pb-1 fw-bold text-success">
+  <app-about
+    [content]="'Я — креативний UI дизайнер із 5-річним досвідом, що спеціалізується на створенні інтуїтивно зрозумілих і естетично приємних інтерфейсів. Пристрасть до мінімалізму та функціональності.'">
+  </app-about>
+
+  <app-education [list]="[
+    { degree: 'Бакалавр прикладна математика', university: 'Національний університет', years: '2018 - 2022' },
+    { degree: 'Бакалавр дизайну', university: 'Львівська політехніка', years: '2014 - 2018' }
+  ]"></app-education>
+
+  <app-experience [list]="[
+    { role: 'Старший UI/UX Дизайнер', years: '2022 - Present', company: 'Tech Innovations Inc.', description: 'Керування командою з 3 дизайнерів, розробка дизайн-систем.' },
+    { role: 'Молодший Веб-дизайнер', years: '2019 - 2022', company: 'Creative Studio Lviv', description: 'Створення макетів вебсайтів та мобільних додатків.' }
+  ]"></app-experience>
+
+  <app-expertise [skills]="[
+    { name: 'Adobe Photoshop', percent: 90 },
+    { name: 'Adobe Illustrator', percent: 80 },
+    { name: 'Adobe Indesign', percent: 75 },
+    { name: 'Power Point', percent: 95 }
+  ]"></app-expertise>
+
+  <hr class="my-5">
+
+  <div class="contact-section mt-4 p-4 border rounded shadow-sm bg-light">
+    <h3 class="text-success fw-bold border-bottom border-success border-3 d-inline-block mb-4 pb-1">
       Зворотний зв'язок (Реактивна форма)
     </h3>
 
@@ -21,19 +43,19 @@
       <div class="row">
         <div class="col-md-6 mb-3">
           <label class="form-label fw-bold">Ваше ім'я</label>
-          <input type="text" formControlName="userName" class="form-control"
+          <input type="text" formControlName="userName" placeholder="Іван" class="form-control"
                  [class.is-invalid]="f.userName.invalid && f.userName.touched">
         </div>
 
         <div class="col-md-6 mb-3">
           <label class="form-label fw-bold">Електронна пошта</label>
-          <input type="email" formControlName="userEmail" class="form-control"
+          <input type="email" formControlName="userEmail" placeholder="example@mail.com" class="form-control"
                  [class.is-invalid]="f.userEmail.invalid && f.userEmail.touched">
         </div>
 
         <div class="col-12 mb-3">
           <label class="form-label fw-bold">Повідомлення</label>
-          <textarea formControlName="message" class="form-control" rows="3"
+          <textarea formControlName="message" placeholder="Ваш текст тут..." class="form-control" rows="3"
                     [class.is-invalid]="f.message.invalid && f.message.touched"></textarea>
         </div>
       </div>

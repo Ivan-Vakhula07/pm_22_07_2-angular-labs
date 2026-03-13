@@ -9,6 +9,12 @@ import { CommonModule } from '@angular/common';
   styleUrl: './expertise.css'
 })
 export class ExpertiseComponent {
-  // ВИПРАВЛЕНО: змінено назву на data для синхронізації з батьківським компонентом
-  @Input() data: any[] = [];
+  // Залишаємо декоратор @Input, щоб батьківський компонент міг передавати дані
+  // Але одразу присвоюємо йому твій масив як значення за замовчуванням
+  @Input() skills: any[] = [
+    { name: 'Adobe Photoshop', percent: 90 },
+    { name: 'Adobe Illustrator', percent: 80 },
+    { name: 'Adobe Indesign', percent: 75 },
+    { name: 'Power Point', percent: 95 }
+  ];
 }
