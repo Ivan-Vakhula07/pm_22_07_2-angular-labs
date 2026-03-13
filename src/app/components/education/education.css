@@ -1,0 +1,16 @@
+.education_full_card {
+  border: 1px solid #0d6efd; /* Синій контур як на фото */
+  border-radius: 8px;
+  transition: transform 0.2s ease-in-out;
+}
+
+.education_full_card:hover {
+  transform: scale(1.01);
+  box-shadow: 0 4px 8px rgba(13, 110, 253, 0.1);
+}
+
+.badge.bg-primary {
+  background-color: #0d6efd !important;
+  font-weight: 500;
+  margin-left: 10px;
+}

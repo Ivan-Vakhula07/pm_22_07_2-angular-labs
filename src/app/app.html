@@ -1,1 +1,14 @@
-<app-base></app-base>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" href="#">CV App</a>
+    <div class="navbar-nav">
+      <a class="nav-link" routerLink="/resume" routerLinkActive="active">Резюме</a>
+      <a class="nav-link" routerLink="/login" routerLinkActive="active">Увійти</a>
+      <a class="nav-link" routerLink="/admin" routerLinkActive="active">Адмінка</a>
+    </div>
+  </div>
+</nav>
+
+<div class="container mt-4">
+  <router-outlet></router-outlet>
+</div>
